@@ -18,5 +18,6 @@ po一张之前的博客截图作为留恋，这个是用的Hexo创建的，主�
 ![image](/assets/images/2016/hexo-blog-before.png)
 
 
-大三上学Python的时候从零开始写的一个简易博客
+大三上学Python的时候从零开始写的一个简易博客(https://github.com/lionrock/Flaskr)
 ![image](/assets/images/2016/flaskr-blog.png)
+
