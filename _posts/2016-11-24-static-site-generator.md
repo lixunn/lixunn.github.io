@@ -14,6 +14,9 @@ tags: ['网站', '博客']
 
 
 
-po一张之前的博客截图作为留恋
-
+po一张之前的博客截图作为留恋，这个是用的Hexo创建的，主题用的是一个华科的学长写的（模版语言用的ejs，我曾一度想用jade改写）
 ![image](/assets/images/2016/hexo-blog-before.png)
+
+
+大三上学Python的时候从零开始写的一个简易博客
+![image](/assets/images/2016/flaskr-blog.png)
