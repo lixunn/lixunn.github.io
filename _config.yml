@@ -1,0 +1,63 @@
+# Basic
+title: Xun Li
+subtitle: 虚怀若竹，清气若兰
+welcome_message: 風立ちぬ  いざ生きめやも
+description: welcome to my personal blog 🍭
+creator: <a href="http://xunli.xyz">@lionrock</a>
+
+url: "http://xunli.xyz"
+
+permalink: /:year/:month/:title/
+
+# Format
+highlighter: plain
+markdown: redcarpet
+redcarpet:
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript", tables]
+
+# supported colors: blue, green, purple, red, orange or slate. If you need clear, leave it empty.
+cover_color: slate
+
+blog_button:
+    title: 博客
+    description: 访问博客
+
+nav:
+    - {title: 关于, description: 了解更多关于我, url: 'http://xunli.xyz/about'}
+    - {title: 订阅, description: RSS订阅本站, url: 'http://xunli.xyz/atom.xml'}
+
+# Pagination
+gems:
+    - jekyll-paginate
+    - jekyll-sitemap
+paginate: 10
+paginate_path: "page/:num/"
+
+# Comment
+comment:
+    # disqus: 
+    duoshuo: 6356578375061997000
+# Social
+social:
+    github: lionrock
+    twitter: xunli007
+    gplus: 109593640000742172882
+    mail: mail@xunli.xyz
+
+# Google Analytics
+ga:
+    id: UA-70795748-1
+    host: xunli.xyz
+    
+exclude: [vendor]
+
+sitemap:
+    file: "/sitemap.xml"
+    exclude:
+        - "/atom.xml"
+        - "/feed.xml"
+        - "/feed/index.xml"
+    include_posts:
+        - "/index.html"
+    change_frequency_name: "change_frequency"
+    priority_name: "priority"
