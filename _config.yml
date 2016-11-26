@@ -41,7 +41,7 @@ paginate_path: "page/:num/"
 # Comment
 comment:
     # disqus: 
-    duoshuo: 6356578375061997000
+    duoshuo: "xunli007"
 # Social
 social:
     github: lionrock
