@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /css/
+Disallow: /js/
+Sitemap: <http://xunli.xyz/sitemap.xml>
