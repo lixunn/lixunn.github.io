@@ -57,9 +57,6 @@ ga:
 # Baidu TongJi
 bd:
     id: "46c4a8de31103594abedba760292557b"
-    code: "CRaPQN3rKO" # baidu-site-verification
-    
-
 
 exclude: [vendor]
 
