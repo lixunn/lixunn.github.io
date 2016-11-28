@@ -53,7 +53,13 @@ social:
 ga:
     id: UA-70795748-1
     host: xunli.xyz
+
+# Baidu TongJi
+bd:
+    id: 46c4a8de31103594abedba760292557b
     
+
+
 exclude: [vendor]
 
 sitemap:
