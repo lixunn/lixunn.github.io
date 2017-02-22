@@ -28,7 +28,7 @@ blog_button:
 
 nav:
     - {title: 关于, description: 了解更多关于我, url: 'http://xunli.xyz/about'}
-    - {title: 订阅, description: RSS订阅本站, url: 'http://xunli.xyz/atom.xml'}
+    - {title: 订阅, description: RSS订阅本站, url: '/feed.xml'}
 
 # Pagination
 gems:
@@ -40,7 +40,7 @@ paginate_path: "page/:num/"
 
 # Comment
 comment:
-    # disqus: 
+    # disqus:
     duoshuo: "xunli007"
 # Social
 social:
