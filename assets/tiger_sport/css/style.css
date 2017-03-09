@@ -1,0 +1,45 @@
+@charset "utf-8";
+
+*{
+    font-family: "PingFang SC";
+}
+
+.font_16{
+    font-size: 16px;
+    color: #303030;
+}
+
+.font_16_white{
+    font-size: 16px;
+    color: white;
+}
+
+.font_14{
+    font-size: 14px;
+    color: #757575;
+}
+
+#navbar-header{
+    height: 60px;
+}
+.logo{
+    padding: 0;
+    height: 0;
+    position: relative;
+    left: 16px;
+    top: 8px;
+}
+.logo img{
+    float: left;
+}
+
+.logo span{
+    float: left;
+    margin-left: 8px;
+    margin-top: 11px
+}
+
+#navbar-collapse ul{
+    margin-top: 0;
+    margin-bottom: 0;
+}
