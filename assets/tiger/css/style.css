@@ -14,17 +14,17 @@
 }
 
 .main-header-box {
-    position: relative;
-    background-color: white;
-    height: 60px;
-}
-
-.main-header {
-    height: 60px;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    height: 60px;
+    z-index: 9999;
+}
+
+.main-header {
+    height: 60px;
 }
 .main-header .container {
     height: 60px;
@@ -49,7 +49,7 @@
     display: none;
     position: absolute;
     top: 60px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.9);
     width: 100%;
     height: 260px;
     z-index: 9999;
@@ -102,9 +102,47 @@
 }
 
 .main-box .mini-box {
+    display: flex;
+    flex-direction: column;
     flex: 1;
     width: 100%;
     height: 100px;
     background-color: #444444;
     margin: 5px;
+}
+
+
+.top-box {
+    display: flex;
+    flex: 3;
+}
+.top-box .top-left {
+    flex: 4;
+}
+.top-box .top-left .num {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-left: 5px;
+}
+.top-box .top-left .unit {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 200;
+}
+.top-box .top-right {
+    flex: 1;
+}
+.top-box .top-right span {
+    color: #707070;
+    font-size: 30px;;
+}
+
+.bottom-box {
+    flex: 2;
+}
+.bottom-box span {
+    position: relative;
+    left: 5px;
+    color: #fff;
 }

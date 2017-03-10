@@ -1,9 +1,9 @@
 # Basic
-name: 黎浔的个人博客
-title: Xun Li
-subtitle: 虛懷若竹，清氣若蘭
-welcome_message: 嗨，我是黎浔，歡迎來到我的個人網誌
-description: 關注科技與人文
+name: "黎浔的个人博客"
+title: "Xun Li"
+subtitle: "虛懷若竹，清氣若蘭"
+welcome_message: "嗨，我是黎浔，歡迎來到我的個人網誌"
+description: "關注科技與人文"
 creator: <a href="http://xunli.xyz">@lionrock</a>
 
 url: "http://xunli.xyz"
@@ -30,10 +30,11 @@ nav:
     - {title: 关于, description: 了解更多关于我, url: 'http://xunli.xyz/about'}
     - {title: 订阅, description: RSS订阅本站, url: '/feed.xml'}
 
-# Pagination
+
 gems:
     - jekyll-paginate
     - jekyll-sitemap
+    - amp-jekyll
 
 paginate: 10
 paginate_path: "page/:num/"
@@ -59,6 +60,9 @@ bd:
     id: "46c4a8de31103594abedba760292557b"
 
 exclude: [vendor]
+
+skip_amp: true
+ampdir: "/"
 
 sitemap:
     file: "/sitemap.xml"
