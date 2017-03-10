@@ -18,9 +18,9 @@ tags: ['网站', '博客']
 
 
 po一张之前的博客截图作为留念，这个是用的Hexo创建的
-![image](/assets/images/2016/hexo-blog-before.png)
+![image](http://7xort8.com1.z0.glb.clouddn.com/hexo-blog-before.jpg)
 
 
 大三上学Python的时候从零开始写的一个简易博客(https://github.com/lionrock/Flaskr)
-![image](/assets/images/2016/flaskr-blog.png)
+![image](http://7xort8.com1.z0.glb.clouddn.com/flaskr-blog.jpg)
 
