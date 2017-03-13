@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body style="margin: 0; background-color: #f4f5f5">
+    <div id="bg" class="black_cover"></div>
 
     <div class="main-header-box">
         <div class="main-header">
@@ -87,14 +88,21 @@
 
     <script src="js/jquery-3.1.1.min.js"></script>
     <script>
+        function navToggle() {
+            if($("#nav_down").is(":hidden")) {
+                $("#bg").show();
+                $("#nav_down").slideDown("slow");
+            } else {
+                $("#bg").hide();
+                $("#nav_down").slideUp();
+            }
+        };
+
         $(document).ready(function() {
-            $("#logo").click(function() {
-                if($("#nav_down").is(":hidden")) {
-                    $("#nav_down").slideDown("slow");
-                } else {
-                    $("#nav_down").slideUp();
-                }
-            })
+            $("#bg").bind('touchstart', navToggle);
+            $("#bg").bind('click', navToggle);
+            $("#logo").bind('touchstart', navToggle);
+            $("#logo").bind('click', navToggle);
         });
     </script>
 </body>
