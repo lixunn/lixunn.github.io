@@ -34,7 +34,6 @@ nav:
 gems:
     - jekyll-paginate
     - jekyll-sitemap
-    - amp-jekyll
 
 paginate: 10
 paginate_path: "page/:num/"
