@@ -54,12 +54,18 @@ function Point(x, y) {
 ```
 当 new Point(x, y) 执行的时候，一个新的 Point 对象会被创建出来。如果这是 Point 对象第一次被创建，V8 会为它初始化一个隐藏类，不妨称作 C0。因为这个对象还没有定义任何属性，所以这个初始类是一个空类。到这个时候为止，对象 Point 的隐藏类是 C0。
 
+![](https://flipboard-web-service.flipboard.cn/api/image/echo?imgUrl=http%3A%2F%2Fimg.blog.csdn.net%2F20150417115540588%3Fwatermark%2F2%2Ftext%2FaHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGdsODY4%2Ffont%2F5a6L5L2T%2Ffontsize%2F400%2Ffill%2FI0JBQkFCMA%3D%3D%2Fdissolve%2F70%2Fgravity%2FCenter)
+
 执行函数 Point 中的第一条语句（this.x = x;）会为对象 Point 创建一个新的属性 x。此时，V8 会在 C0 的基础上创建另一个隐藏类 C1，并将属性 x 的信息添加到 C1 中：这个属性的值会被存储在距 Point 对象的偏移量为 0 的地方。 在 C0 中添加适当的类转移信息，使得当有另外的以其为隐藏类的对象在添加了属性 x 之后能够找到 C1 作为新的隐藏类。此时对象 Point 的隐藏类被更新为 C1。
+
+![](https://flipboard-web-service.flipboard.cn/api/image/echo?imgUrl=http%3A%2F%2Fimg.blog.csdn.net%2F20150417115617763%3Fwatermark%2F2%2Ftext%2FaHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGdsODY4%2Ffont%2F5a6L5L2T%2Ffontsize%2F400%2Ffill%2FI0JBQkFCMA%3D%3D%2Fdissolve%2F70%2Fgravity%2FCenter)
 
 
 执行函数 Point 中的第二条语句（this.y = y;）会添加一个新的属性 y 到对象 Point 中。同理，此时 V8 会：
 
 在 C1 的基础上创建另一个隐藏类 C2，并在 C2 中添加关于属性 y 的信息：这个属性将被存储在内存中离 Point 对象的偏移量为 1 的地方。 在 C1 中添加适当的类转移信息，使得当有另外的以其为隐藏类的对象在添加了属性 y 之后能够找到 C2 作为新的隐藏类。此时对象 Point 的隐藏类被更新为 C2。
+
+![](https://flipboard-web-service.flipboard.cn/api/image/echo?imgUrl=http%3A%2F%2Fimg.blog.csdn.net%2F20150417115715764%3Fwatermark%2F2%2Ftext%2FaHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGdsODY4%2Ffont%2F5a6L5L2T%2Ffontsize%2F400%2Ffill%2FI0JBQkFCMA%3D%3D%2Fdissolve%2F70%2Fgravity%2FCenter)
 
 
 乍一看似乎每次添加一个属性都创建一个新的隐藏类非常低效。实际上，利用类转移信息，隐藏类可以被重用。下次创建一个 Point 对象的时候，就可以直接共享由最初那个 Point 对象所创建出来的隐藏类。例如，如果又一个 Point 对象被创建出来了：
@@ -96,6 +102,7 @@ mov eax, [ebx, <cached x offset>]
 
 当然最不幸的是代码不停地被optimized，然后又被deoptimized， 这会带来很大的性能损耗。以下是代码optimized与deoptimized执行流程：
 
+![](https://flipboard-web-service.flipboard.cn/api/image/echo?imgUrl=http://img.blog.csdn.net/20150417115627428?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGdsODY4/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center)
 
 ## 2.4 高效垃圾收集
 最初的V8引擎垃圾收集是不分代的，但目前V8引擎的GC机制几乎采用了与java hotspot完全相同的GC机制。对java虚拟机有经验的开发者直接套用， 对分代回收机制本文就不展开说了。
@@ -104,12 +111,14 @@ mov eax, [ebx, <cached x offset>]
 
 通常Full GC的mark sweep流程是这样的：
 
+![](https://flipboard-web-service.flipboard.cn/api/image/echo?imgUrl=http%3A%2F%2Fimg.blog.csdn.net%2F20150417115700438%3Fwatermark%2F2%2Ftext%2FaHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGdsODY4%2Ffont%2F5a6L5L2T%2Ffontsize%2F400%2Ffill%2FI0JBQkFCMA%3D%3D%2Fdissolve%2F70%2Fgravity%2FCenter)
+
 
 这个流程里每次GC都要完成完整的Mark, Sweep流程，因此停顿时间较久。
 
 引入了increment mark之后的流程是这样的： 
 
-
+![](https://flipboard-web-service.flipboard.cn/api/image/echo?imgUrl=http%3A%2F%2Fimg.blog.csdn.net%2F20150417115852375%3Fwatermark%2F2%2Ftext%2FaHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGdsODY4%2Ffont%2F5a6L5L2T%2Ffontsize%2F400%2Ffill%2FI0JBQkFCMA%3D%3D%2Fdissolve%2F70%2Fgravity%2FCenter)
 
 这个流程里每次GC可以在mark一半的时候停住，在完成业务逻辑后继续下一轮的GC，因此停顿时间较短。
 
@@ -178,6 +187,7 @@ add("a", "b"); // add中的+操作变成了多态操作
 
 The oz story的游戏有频繁的GC，游戏的帧率在运行一段时间后不断下降，以下是gc曲线：
 
+![](https://flipboard-web-service.flipboard.cn/api/image/echo?imgUrl=http%3A%2F%2Fimg.blog.csdn.net%2F20150417115941702%3Fwatermark%2F2%2Ftext%2FaHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGdsODY4%2Ffont%2F5a6L5L2T%2Ffontsize%2F400%2Ffill%2FI0JBQkFCMA%3D%3D%2Fdissolve%2F70%2Fgravity%2FCenter)
 
 是什么导致如此GC呢？ 有三个疑犯：
 
@@ -186,15 +196,17 @@ new出来的对象没有释放, 这通常由闭包或集合类的操作导致
 某段特别热的代码运行在deoptimized模式。
 开发人员对js的开发规范了然于胸，绝对不会犯前两个错误，于是怀疑定在第3个嫌疑犯。这是诊断time后的结果：
 
-
+![](https://flipboard-web-service.flipboard.cn/api/image/echo?imgUrl=http%3A%2F%2Fimg.blog.csdn.net%2F20150417120018081%3Fwatermark%2F2%2Ftext%2FaHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGdsODY4%2Ffont%2F5a6L5L2T%2Ffontsize%2F400%2Ffill%2FI0JBQkFCMA%3D%3D%2Fdissolve%2F70%2Fgravity%2FCenter)
 
 上图的drawSprites运行在optimized状态，但updateSprites一直运行在deoptimized状态。
 
 导致不断GC的原凶竟然是这几行代码：
 
-
+![](https://flipboard-web-service.flipboard.cn/api/image/echo?imgUrl=http%3A%2F%2Fimg.blog.csdn.net%2F20150417120052620%3Fwatermark%2F2%2Ftext%2FaHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGdsODY4%2Ffont%2F5a6L5L2T%2Ffontsize%2F400%2Ffill%2FI0JBQkFCMA%3D%3D%2Fdissolve%2F70%2Fgravity%2FCenter)
 
 因为for in下面的代码在V8下暂时无法优化。把for in内部的代码提出成单独的function， V8就可以优化这个function了。 这时GC和掉帧率的问题就立刻解决了。GC曲线出现了缓慢平缓的状态：
+
+![](https://flipboard-web-service.flipboard.cn/api/image/echo?imgUrl=http%3A%2F%2Fimg.blog.csdn.net%2F20150417120130184%3Fwatermark%2F2%2Ftext%2FaHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGdsODY4%2Ffont%2F5a6L5L2T%2Ffontsize%2F400%2Ffill%2FI0JBQkFCMA%3D%3D%2Fdissolve%2F70%2Fgravity%2FCenter)
 
 以上教训不仅仅是使用for in或try catch的问题,也许未来V8引擎会解决掉这两个问题。而是要理解怎么发现问题、解决问题，还有deoptimized竟然会对GC产生影响。
 
