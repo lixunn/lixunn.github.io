@@ -3,10 +3,6 @@ GEM
   specs:
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
-    amp-jekyll (1.0.2)
-      fastimage (>= 1.8.0)
-      jekyll (~> 3.0)
-      nokogiri (>= 1.8.1)
     colorator (1.1.0)
     fastimage (2.1.0)
     ffi (1.9.18)
