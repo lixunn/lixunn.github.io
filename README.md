@@ -1,4 +1,4 @@
-## 黎浔的個人網誌 (Leo's Personal Blog)
+## Leo's Blog
 
 http://xunli.xyz
 
